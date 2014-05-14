@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="T-key">
+    <meta name="description" content="ニコ動早見所は、ニコ動のランキングや新着動画、特定のタグの動画を素早くチェックするためのニコニコ動画視聴支援サイトです。">
+    <meta name="keywords" content="T-key,Gentle,Trickey,ニコニコ動画,ニコ動,ランキング">
+    <link rel="stylesheet" type="text/css" href="./css/nicoql.css" media="all">
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"> </script>
+    <![endif]-->
+    <title>ニコ動早見所</title>
+  </head>
+
+  <body>
+
+  <div>
+
+    <header id="global_header">
+      <h1>ニコ動早見所 12.0.2</h1>
+      <nav>
+	<ul>
+          <li><a href="http://www.nicovideo.jp/">ニコ動</a></li>
+          <li><a href="http://www.nicovideo.jp/my/top">マイページ</a></li>
+          <li><a href="help.html">ヘルプ</a></li>
+        </ul>
+      </nav>
+      <section id="functions">
+        <div id="remocon_toggle" class="menu_toggle">リモコン</div>
+        <div id="filter_toggle" class="menu_toggle">フィルタ</div>
+	<ul id="save_selector">
+	  <li id="save_group1" class="selected">タブ１</li>
+	  <li id="save_group2">タブ２</li>
+	  <li id="save_group3">タブ３</li>
+	</ul>
+	<div id="search">
+          <input type="text" id="query" placeholder="Enter でニコ動で検索" size="25">
+	</div>
+      </section>
+	
+    </header>
+
+    <aside id="remocon" class="menu" style="display: none;">
+      <div class="inputted_items">
+        <span id="remocon_clr" class="clr_bttn">Clear</span>
+        <span id="remocon_box" class="box"> </span>
+      </div>
+      <section id="ranking">
+        <h1>見たいランキングの選択</h1>
+        <p class="condition">
+          <label for="type">対象:</label>
+          <select id="type" name="type">
+            <option value="view">再生</option>
+            <option value="res">コメント</option>
+            <option value="mylist">マイリスト</option>
+            <option value="fav" selected="selected">総合</option>
+          </select>
+          <label for="range">期間:</label>
+          <select id="range" name="range">
+            <option value="hourly">毎時</option>
+            <option value="daily" selected="selected">デイリー</option>
+            <option value="weekly">週間</option>
+            <option value="monthly">月間</option>
+            <option value="total">合計</option>
+          </select>
+        </p>
+        <p id="genre">
+          <button id="g_all" type="button" value="all">総合</button>
+          <button type="button" value="ent">エンタメ</button>
+          <button type="button" value="music">音楽</button>
+          <button type="button" value="sing">歌ってみた</button>
+          <button type="button" value="play">演奏してみた</button>
+          <button type="button" value="dance">踊ってみた</button>
+          <button type="button" value="vocaloid">VOCALOID</button>
+          <button type="button" value="nicoindies">インディーズ</button>
+          <button type="button" value="animal">動物</button>
+          <button type="button" value="cooking">料理</button>
+          <button type="button" value="nature">自然</button>
+          <button type="button" value="travel">旅行</button>
+          <button type="button" value="sport">スポーツ</button>
+          <button type="button" value="lecture">ニコ動講座</button>
+          <button type="button" value="drive">車載動画</button>
+          <button type="button" value="history">歴史</button>
+          <button type="button" value="politics">政治</button>
+          <button type="button" value="science">科学</button>
+          <button type="button" value="tech">技術部</button>
+          <button type="button" value="handcraft">手芸部</button>
+          <button type="button" value="make">作ってみた</button>
+          <button type="button" value="anime">アニメ</button>
+          <button type="button" value="game">ゲーム</button>
+          <button type="button" value="toho">東方</button>
+          <button type="button" value="imas">IM@S</button>
+          <button type="button" value="radio">ラジオ</button>
+          <button type="button" value="draw">描いてみた</button>
+          <button type="button" value="are">例のアレ</button>
+          <button type="button" value="diary">日記</button>
+          <button type="button" value="other">その他</button>
+        </p>
+      </section>
+      <section id="new">
+        <h1>見たい新着動画リストの選択</h1>
+        <button type="button" value="newarrival">新着投稿動画</button>
+        <button type="button" value="recent">新着コメント動画</button>
+      </section>
+      <section id="tag">
+        <h1>見たいタグ動画リストの入力</h1>
+	<input type="text" id="tag_name" value="" size="25">
+        <label for="sort_by">ソート方式:</label>
+        <select id="sort_by">
+          <option value="f" selected>投稿日時が新しい順</option>
+          <option value="v">再生数が多い順</option>
+          <option value="r">コメント数が多い順</option>
+          <option value="m">マイリスト数が多い順</option>
+          <option value="l">再生時間が長い順</option>
+        </select>
+        <button type="button" id="tag_ret">決定</button>
+      </section>
+      <section id="open_mylist">
+        <h1>見たいマイリストの入力</h1>
+        <label for="open_mylist_num">マイリスト番号:</label>
+	<input type="text" id="open_mylist_num" value="" size="25">
+        <button type="button" id="open_mylist_ret">決定</button>
+      </section>
+      <section id="data_transportation">
+        <h1>他ブラウザへのデータのインポート/エクスポート</h1>
+        <p>
+          <strong>
+            ユーザ名およびパスワードは暗号化されず転送されるため、
+            ユーザ名とパスワードはできるだけ他のサイトで使っていない簡単なものにして下さい。　
+          </strong>
+        </p>
+        <label for="import_or_export">実行内容:</label>
+        <select id="import_or_export">
+          <option value="import" >インポート</option>
+          <option value="export" selected>エクスポート</option>
+        </select>
+        <label for="transporter_username">ユーザ名(英数字のみ):</label>
+	<input type="text" id="transporter_username" value="" size="25">
+        <label for="transporter_password">パスワード(英数字のみ):</label>
+	<input type="text" id="transporter_password" value="" size="25">
+        <button type="button" id="transporter_ret">実行</button>
+      </section>
+    </aside>
+
+    <aside id="filter" class="menu" style="display: none;">
+      <div class="inputted_items">
+        <span id="filter_clr" class="clr_bttn">Clear</span>
+        <span id="filter_box" class="box"> </span>
+      </div>
+      <section id="filter_form">
+        <h1>表示したい動画の条件</h1>
+        <label for="view">再生数</label>が
+        <input type="text" name="view" id="view" value="0" size="10">
+        <select id="view_ou" name="view_ou">
+          <option value="over" selected="selected">以上</option>
+          <option value="under">未満</option>
+        </select>、
+        <label for="res">コメント</label>が
+        <input type="text" name="res" id="res" value="0" size="10">
+        <select id="res_ou" name="res_ou">
+          <option value="over" selected="selected">以上</option>
+          <option value="under">未満</option>
+        </select>、
+        <label for="mylist">マイリスト</label>が
+        <input type="text" name="mylist" id="mylist" value="0" size="10">
+        <select id="mylist_ou" name="mylist_ou">
+          <option value="over" selected="selected">以上</option>
+          <option value="under">未満</option>
+        </select>、<br />
+        <label for="period">投稿日時</label>が
+        <select id="period">
+          <option value="0" selected="selected">期間指定なし</option>
+          <option value="1">24 時間以内</option>
+          <option value="7">1 週間以内</option>
+          <option value="31">1 か月以内</option>
+          <option value="365">1 年以内</option>
+        </select>、
+        <label for="comment">タイトル・主コメ</label>に
+        <input type="text" name="comment" id="comment" value="" size="20">
+        を含む動画を表示する。<br />
+        <button type="button" id="filter_ret">実行</button>
+      </section>
+    </aside>
+
+    <article>
+      <section id="rink">
+	<section id="bookmark">
+	  <header>
+	    <h1>ブックマークリスト</h1>
+            <select id="bookmark_selector">
+	      <option value="mark_group0" selected="selected">未分類</option>
+	      <option value="mark_group1">グループA</option>
+	      <option value="mark_group2">グループB</option>
+	      <option value="mark_group3">グループC</option>
+            </select>
+	  </header>
+	  <ol id="marked_list"> </ol>
+	  </section>
+	</section>
+        <section id="movie_detail" style="display: none;">
+            <div id="movie_detail_thumbnail">
+                <img src="thumbnail.jpg" alt="" width="130" height="100" />
+            </div>
+            <table>
+              <tr><td class="thead">タイトル</td><td id="movie_detail_title"></td></tr>
+              <tr><td class="thead">投稿日時</td><td id="movie_detail_first_retrieve"></td></tr>
+              <tr><td class="thead">動画時間</td><td id="movie_detail_length"></td></tr>
+              <tr><td class="thead">再生数</td><td id="movie_detail_view"></td></tr>
+              <tr><td class="thead">コメント数</td><td id="movie_detail_res"></td></tr>
+              <tr><td class="thead">マイリス数</td><td id="movie_detail_mylist"></td></tr>
+              <tr><td class="thead">登録タグ</td><td id="movie_detail_tags"></td></tr>
+              <tr><td class="thead">最新コメ</td><td id="movie_detail_last_res_body"></td></tr>
+              <tr><td class="thead">動画の概要</td><td id="movie_detail_description"></td></tr>
+            </table>
+        </section>
+    </article>
+
+    <footer>
+      <p class="copyright">
+        Site owner: T-key(Trickey) | Mail: cafegentle{at}gmail.com
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="https://www.google.com/jsapi?key=ABQIAAAAOtLv5h7x-jF7bWCQPa5_FhRHe06TI9uFRtvGQxGuzbCc8z4LIBSxsxbLfy2m7BsfO_XXx0jSklerEQ" type="text/javascript"></script>
+  <script type="text/javascript">
+      google.load("feeds", "1");
+      google.load("jquery", "1.7");
+  </script>
+  <script type="text/javascript" src="./js/nicoql-20121208-min.js"> </script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10700402-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+</body>
+</html>

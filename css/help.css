@@ -1,0 +1,146 @@
+@import url(base.css);
+
+/**********
+ * header
+ **********/
+#global_header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  min-width: 900px;
+  height: 25px;
+  background-color: #000;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+/*-- site title --*/
+#global_header h1 {
+  float: left;
+  width: 150px;
+  margin-left: 5px;
+  font-size: 108%;
+  color: #fff;
+}
+
+/*-- global navigation --*/
+nav {
+  float: right;
+  width: 350px;
+  text-align: right;
+}
+
+nav li {
+  display: inline;
+  border-left: 1px inset gray;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #999;
+}
+
+nav a:hover, nav a:active {
+  color: #fff;
+}
+
+/**********
+ * aside
+ **********/
+aside {
+    clear: both;
+    width: 838px;
+    min-width: 800px;
+    margin: 30px auto 5px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff url("../images/help/help_bg.png") no-repeat right bottom;
+}
+
+aside ol {
+    margin: 16px auto;
+    font-size: 13px;
+}
+
+aside ol li {
+    list-style-type: decimal;
+    margin: 5px 0 5px 2em;
+   
+}
+
+
+/**********
+ * article
+ **********/
+article {
+    clear: both;
+    width: 838px;
+    min-width: 800px;
+    margin: 30px auto 5px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+article header time {
+    float: right;
+    font-size: 77%;
+}
+
+article header h1, aside h1 {
+    margin: 10px 0;
+    font-size: 123.1%;
+}
+
+.article_body {
+    font-size: 13px;
+    line-height: 1.3em;
+}
+
+.article_body h2 {
+    margin: 30px 0 10px;
+    border-bottom: 1px solid #000;
+    font-size: 116%;
+}
+
+.article_body p {
+    text-indent: 1em;
+    margin-bottom: 5px;
+}
+
+.article_body ul {
+    margin: 16px auto;
+}
+
+.article_body ul li {
+    list-style-type: circle;
+    margin: 8px 0 8px 2em;
+   
+}
+
+.article_body figure {
+    margin: 16px auto;
+    text-align: center;
+}
+
+.article_body figcaption {
+    font-size: 77%;
+    text-align: center;
+}
+
+/*
+ * Footer
+ */
+footer {
+  clear: both;
+  border-top: 1px dotted #999;
+}
+
+.copyright {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 10px;
+}

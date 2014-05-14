@@ -1,0 +1,410 @@
+@import url(base.css);
+
+/*
+ * header
+ */
+#global_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  min-width: 980px;
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  background-color: #333;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+/*-- site title --*/
+#global_header h1 {
+  float: left;
+  width: 150px;
+  margin-left: 5px;
+  color: #fff;
+}
+
+/*-- global navigation --*/
+nav {
+  float: right;
+  width: 215px;
+  text-align: right;
+}
+
+nav li {
+    display: inline;
+    width: 50px;
+    padding: 0 10px; 
+    border-left: 1px inset #ccc;
+}
+
+nav a { color: #999; }
+nav a:hover, nav a:active { color: #fff; }
+
+#functions {
+    float: right;
+    margin-top: 2px;
+}
+
+.menu_toggle, #save_selector, #search {
+    display: inline-block;
+}
+
+
+/*-- menu toggle --*/
+.menu_toggle {
+    width: 80px;
+    height: 24px;
+    margin-bottom: 2px;
+    border: 1px outset #ccc;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 24px;
+    cursor: pointer;
+}
+.menu_toggle:active { border: 1px inset #ccc; }
+
+#remocon_toggle { background-color: #fdf6e7; }
+#remocon_toggle:hover { 
+    background-color: #febe0e; 
+    color: #fff;
+}
+#filter_toggle { background-color: #c6f5ff; }
+#filter_toggle:hover {
+    background-color: #307bcd;
+    color: #fff;
+}
+
+/*-- save selector --*/
+#save_selector { width: 180px; }
+
+#save_selector li {
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0; 
+    background-color: #eee;
+    font-size: 12px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+#save_selector li:hover, #save_selector li:focus {
+    background-color: #ccc;
+}
+#save_selector li:active { background-color: blue; }
+#save_selector .selected { 
+    border-bottom: 1px solid #fff;
+    background-color: #fff; 
+}
+
+/*
+ * Aside
+ */
+aside.menu {
+    clear: both;
+    position: fixed;
+    top: 30px;
+    z-index: 5;
+    overflow: hidden;
+    width: 98%;
+    padding: 1%;
+    border-bottom: 3px solid #ccc;
+    background-color: #eee;
+    font-size: 12px;
+    line-height: 1.5em;
+    opacity: 0.95;
+}
+
+aside.menu section {
+    margin: 10px 0;
+}
+
+aside.menu h1 {
+  clear: both;
+  padding-left: 10px;
+  border-left: 10px solid #febe0e;
+  font-size: 14px;
+  opacity: 1.0;
+}
+
+aside.menu select { margin-right: 5px;}
+
+aside.menu button {
+    width: 7em;
+    margin: 2px 0;
+    padding: 0;
+    line-height: 2em;
+    border: 1px outset #ccc;
+    border-radius: 0.5em;
+    color: #000;
+    background-color: #fff;
+}
+#remocon button:hover, #remocon button:focus { background-color: #fdf6e7; }
+#remocon button:active { 
+    border: 1px inset #ccc; 
+    background-color: #febe0e; 
+    color: #fff;
+}
+#new button { width: 10em; }
+#filter button:hover, #filter button:focus { background-color: #c6f5ff; }
+#filter button:active { 
+    border: 1px inset #ccc; 
+    background-color: #307bcd; 
+    color: #fff;
+}
+
+aside.menu .inputted_items {
+  min-height: 24px;
+  padding: 1px;
+  border: 1px inset #666;
+  font-size: 11px;
+  background-color: #666;
+}
+
+.clr_bttn {
+    display: inline-block;
+    height: 24px;
+    padding: 0 5px;
+    border-right: 1px solid #000;
+    background-color: #333;
+    color: #fff;
+    line-height: 24px;
+    cursor: pointer;
+}
+.clr_bttn:hover { background-color: #666; }
+.clr_bttn:active { background-color: #999; }
+
+.box > span {
+    display: inline-block;
+    height: 24px;
+    padding-left: 5px;
+    border-right: 1px solid #000;
+    color: #fff;
+    line-height: 24px;
+    background-color: #333;
+}
+
+.close {
+  display: block;
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin: 3px 3px 0;
+  border: 1px outset #666;
+  border-radius: 4px;
+  background: url("../images/nicoql_items.png") no-repeat 0 0;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.close:hover, .close:active { border: 1px inset #666; }
+
+/*
+ * Container
+ */
+#rink {
+    overflow: hidden;
+    width: 100%;
+    margin: 40px auto 5px;
+}
+
+/**********
+ * ranking frame
+ **********/
+#rink section {
+    float: left;
+    width: 32%;
+    min-width: 400px;
+    margin: 0 0.5% 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #fff; 
+}
+
+#rink section header {
+    height: 24px;
+    padding: 0 1em;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    font-size: 12px;
+    line-height: 24px;
+    background-color: #333;
+}
+
+#rink section h1 { 
+    display: inline-block; 
+    color: #fff;
+}
+#rink section header h1 a { color: #fff; }
+
+#rink section ol {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 520px;
+}
+
+#rink section li {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  padding: 0 5px;
+  border-bottom: 1px solid #999;
+}
+
+#rink #bookmark li { height: 90px; }
+
+.nico-thumbnail {
+    float: left;
+    margin-top: 5px;
+}
+
+.nico-thumbnail img { font-size: 11px; }
+
+.movie_title {
+    float: left;
+    width: 70%;
+    padding: 5px;
+    border-bottom: 1px dashed #999;
+    font-size: 12.5px;
+}
+
+.movie_title a { color: #000; }
+.movie_title a:hover, .movie_title a:active { color: #999; }
+
+.blank {
+    display: inline-block;
+    width: 20px;
+    margin-left: 5px;
+    background: url("../images/nicoql_items.png") no-repeat -18px 0;
+    text-indent: -9999px;
+}
+
+.fn_buttons {
+    float: left;
+    width: 70%;
+    margin-left: 5px;
+}
+
+.fn_buttons a {
+  height: 20px;
+  margin: 0 3px;
+  padding: 2px 5px;
+  border-bottom: 2px outset #c30;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.fn_buttons a:hover { border-bottom: 2px solid yellow; }
+.fn_buttons a:active { border-bottom: 2px solid blue; }
+
+.bsl {
+    display: inline-block;
+    margin: 5px 0 0 5px;
+    font-size: 12px;
+}
+
+.nico-info-length {
+  display: block;
+  position: absolute;
+  top: 64px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 1em;
+}
+
+.popup {
+  z-index: 5;
+  position: fixed;
+  right: 20px;
+  width: 70%;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  padding: 1em;
+  background-color: #fcfcfc;
+  font-size: 12px;
+}
+
+.quick-alert {
+    padding: 0 10px;
+    border: 1px solid #fff;
+}
+
+/* Movie Detail */
+#movie_detail {
+    z-index: 99;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    overflow-y: scroll;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    opacity: 0.9;
+    border-radius: 20px;         /* CSS3 */
+    -moz-border-radius: 20px;    /* Firefox */
+    -webkit-border-radius: 20px; /* Safari,Chrome */
+}
+
+#movie_detail .thead  {
+    width: 100px;
+}
+
+#movie_detail td  {
+    border: 1px solid #999;
+    padding: 3px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Mark Movie */
+#bookmark_restore {
+  display: block;
+  float: right;
+  cursor: pointer;
+  text-align: right;
+  font-size: x-small;
+}
+
+
+/*
+ * Footer
+ */
+footer {
+  clear: both;
+  border-top: 1px dotted #999;
+}
+
+.copyright {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+
+/*
+ * general class
+ */
+.clear { clear: both; }
+.float-left { float: left; }
+.float-right { float: right; }
+
+figure {
+    margin: 0 auto;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 77%;
+    text-align: center;
+}
+
