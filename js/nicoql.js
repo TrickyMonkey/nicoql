@@ -1,10 +1,10 @@
 /*!
- * NicoNico Quick Look Engine v11.0.0
+ * NicoNico Quick Look Engine v12.0.3
  * http://www.cafe-gentle.jp/work/nicoql/
  *
  * Copyright 2012, T-key (Trickey)
  *
- * Date: Thu Apr 5 00:00:00 2012 -0900
+ * Date: Sun Sep 16 00:00:00 2012 -0900
  */
 
 // initialize
@@ -63,6 +63,8 @@ jQuery(function($) {
         }
         $("#filter_box").empty();
     });
+    // data transportation
+    $("#transporter_ret").click(function() { transportData(); });
     // Change tab.
     $("#save_selector li").click(function() {
 	if ($(this).hasClass("selected")) { return true; }
@@ -370,7 +372,7 @@ function load() {
      */
     var groupID = $("#save_selector .selected").attr("id");
     var s = localStorage.getItem(groupID);
-    return (s === null) ? [] : s.split('+');
+    return (s === null || s === "undefined") ? [] : s.split('+');
 }
 
 function save() {
@@ -528,6 +530,78 @@ function unmark(movieID) {
     return true;
 }
 
+/**
+ * Around importing/exporting savedata and bookmark
+ */
+function transportData() {
+    /* imports savedata and bookmarks from the server, 
+     * or exports them to the server.
+     */
+    var type = $("#import_or_export").val();
+    var username = $("#transporter_username").val();
+    var password = $("#transporter_password").val();
+    var transported_data = {"type": type,
+            "username": username,
+            "password": password,};
+    if (type === 'export') {
+        for (var i = -1, n = localStorage.length; ++i < n;) {
+            key = localStorage.key(i);
+            transported_data[key] = localStorage[key];
+        } 
+    }
+    $.ajax({
+        type: 'POST',
+        url: 'http://www.cafe-gentle.jp/cgi-bin/nico/nicoql-data_transporter.cgi',
+        data: transported_data,
+        success: function(data) {
+               if (type === "import") { importDataProcess(data); }
+               else if (type === "export") { exportDataProcess(data); }
+              },
+        error: function() {alert("通信エラーが発生しました。");}, 
+        dataType: "json"
+    });
+    return true;
+}
+
+function importDataProcess(data) {
+    /* writes the imported savedata and bookmarks into the localStorage.
+     *
+     * @type data: json
+     * @param data: imported savedata and bookmarks
+     */
+    if (data["error"] === "true") {
+        alert("該当するデータがありませんでした。");
+        return false;
+    } else {
+        // import savedata
+        for (key in data) {
+            if (key === "error") {
+                continue;
+            } else {
+                localStorage.setItem(key, data[key]);
+            }
+        }
+        location.reload();
+        return true;
+    }
+}
+
+function exportDataProcess(data) {
+    /* writes the savedata and bookmarks in the localStorage to the server.
+     *
+     * @type data: json
+     * @param data: savedata and bookmarks to export
+     */
+    if (data["error"] === "true") {
+        alert("ユーザ名かパスワードに英数字以外が使われているか、"+
+              "他の人が既に同じユーザ名およびパスワードを使用しています。");
+        return false;
+    } else {
+        alert("データのエクスポートが完了しました。1 時間以内に他のブラウザでデータをインポートして下さい。");
+        return true;
+    }
+}
+
 function frameMarkedItem(movieID, title, thumbnail_url, groupID) {
     /* makes html code to display a bookmarked movie.
      * 
@@ -556,14 +630,14 @@ function frameMarkedItem(movieID, title, thumbnail_url, groupID) {
         .append($(d.createElement("a"))
                 .attr({"class": "blank", "href": url, "target": "_blank"})
                 .text("[別窓表示]"));
-    var $selector = $('<label class="bsl" for="bs">移動先:</label><select class="bs">' +
-                      '<option value="mark_group0">未分類</option>' +
+    var $selector = $('<div class="fn_buttons"><label class="bsl">移動先:' + 
+                      '<select class="bs"><option value="mark_group0">未分類</option>' +
 		      '<option value="mark_group1">グループA</option>' +
 		      '<option value="mark_group2">グループB</option>' +
-		      '<option value="mark_group3">グループC</option></select>')
+		      '<option value="mark_group3">グループC</option></label></select></div>')
 	.val(groupID)
 	.change(function () { moveMark(movieID,
-				       $(this).children(":selected").val()); });
+				$("select",this).children(":selected").val()); });
     return $(d.createElement("li"))
         .attr({"class": "marked-item", "title": movieID})
         .append($thumbnail)
@@ -801,9 +875,6 @@ function itemFnButtons(movieID) {
                 .text("詳細")
                 .click(function() {previewMovieDetail(movieID);}))
         .append($(d.createElement("a"))
-                .attr("href", "http://nicosound.anyap.info/sound/" + movieID)
-                .text("にこさうんど"))
-        .append($(d.createElement("a"))
                 .attr("href", "http://dic.nicovideo.jp/v/" + movieID)
                 .text("大百科"))
         .append($mark_button);
@@ -817,7 +888,12 @@ function filterCheckbox(filterID) {
      * @return: the maked filter checkbox
      */
     var d = document;
-    var v = localStorage.getItem(filterID).split("+");
+    try {
+        var v = localStorage.getItem(filterID).split("+");
+    }
+    catch(e) { 
+        return false;
+    }
     var $span = $(d.createElement("span"));
     $span.addClass(filterID)
         .append($(d.createElement("input"))
