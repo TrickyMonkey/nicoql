@@ -17,7 +17,7 @@
   <div>
 
     <header id="global_header">
-      <h1>ニコ動早見所 12.0.3</h1>
+      <h1>ニコ動早見所 12.1.3</h1>
       <nav>
 	<ul>
           <li><a href="http://www.nicovideo.jp/">ニコ動</a></li>
@@ -47,7 +47,7 @@
       </div>
       <section id="ranking">
         <h1>見たいランキングの選択</h1>
-        <p class="condition">
+        <div class="condition">
           <label for="type">対象:</label>
           <select id="type" name="type">
             <option value="view">再生</option>
@@ -63,39 +63,56 @@
             <option value="monthly">月間</option>
             <option value="total">合計</option>
           </select>
-        </p>
-        <p id="genre">
-          <button id="g_all" type="button" value="all">総合</button>
-          <button type="button" value="ent">エンタメ</button>
-          <button type="button" value="music">音楽</button>
-          <button type="button" value="sing">歌ってみた</button>
-          <button type="button" value="play">演奏してみた</button>
-          <button type="button" value="dance">踊ってみた</button>
-          <button type="button" value="vocaloid">VOCALOID</button>
-          <button type="button" value="nicoindies">インディーズ</button>
-          <button type="button" value="animal">動物</button>
-          <button type="button" value="cooking">料理</button>
-          <button type="button" value="nature">自然</button>
-          <button type="button" value="travel">旅行</button>
-          <button type="button" value="sport">スポーツ</button>
-          <button type="button" value="lecture">ニコ動講座</button>
-          <button type="button" value="drive">車載動画</button>
-          <button type="button" value="history">歴史</button>
-          <button type="button" value="politics">政治</button>
-          <button type="button" value="science">科学</button>
-          <button type="button" value="tech">技術部</button>
-          <button type="button" value="handcraft">手芸部</button>
-          <button type="button" value="make">作ってみた</button>
-          <button type="button" value="anime">アニメ</button>
-          <button type="button" value="game">ゲーム</button>
-          <button type="button" value="toho">東方</button>
-          <button type="button" value="imas">IM@S</button>
-          <button type="button" value="radio">ラジオ</button>
-          <button type="button" value="draw">描いてみた</button>
-          <button type="button" value="are">例のアレ</button>
-          <button type="button" value="diary">日記</button>
-          <button type="button" value="other">その他</button>
-        </p>
+        </div>
+        <dl class="ranking_genre">
+            <dt><button id="g_all" type="button" value="all">総合</button></dt>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="g_ent2">エンタメ・音楽</button></dt>
+            <dd><button type="button" value="ent">エンタメ</button></dd>
+            <dd><button type="button" value="music">音楽</button></dd>
+            <dd><button type="button" value="sing">歌ってみた</button></dd>
+            <dd><button type="button" value="play">演奏してみた</button></dd>
+            <dd><button type="button" value="dance">踊ってみた</button></dd>
+            <dd><button type="button" value="vocaloid">VOCALOID</button></dd>
+            <dd><button type="button" value="nicoindies">インディーズ</button></dd>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="g_life2">生活・一般・スポ</button></dt>
+            <dd><button type="button" value="animal">動物</button></dd>
+            <dd><button type="button" value="cooking">料理</button></dd>
+            <dd><button type="button" value="nature">自然</button></dd>
+            <dd><button type="button" value="travel">旅行</button></dd>
+            <dd><button type="button" value="sport">スポーツ</button></dd>
+            <dd><button type="button" value="lecture">ニコ動講座</button></dd>
+            <dd><button type="button" value="drive">車載動画</button></dd>
+            <dd><button type="button" value="history">歴史</button></dd>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="politics">政治</button></dt>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="g_tech">科学・技術</button></dt>
+            <dd><button type="button" value="science">科学</button></dd>
+            <dd><button type="button" value="tech">技術部</button></dd>
+            <dd><button type="button" value="handcraft">手芸部</button></dd>
+            <dd><button type="button" value="make">作ってみた</button></dd>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="g_culture2">アニメ・ゲーム・絵</button></dt>
+            <dd><button type="button" value="anime">アニメ</button></dd>
+            <dd><button type="button" value="game">ゲーム</button></dd>
+            <dd><button type="button" value="toho">東方</button></dd>
+            <dd><button type="button" value="imas">IM@S</button></dd>
+            <dd><button type="button" value="radio">ラジオ</button></dd>
+            <dd><button type="button" value="draw">描いてみた</button></dd>
+        </dl>
+        <dl class="ranking_genre">
+            <dt><button type="button" value="g_other">その他</button></dt>
+            <dd><button type="button" value="are">例のアレ</button></dd>
+            <dd><button type="button" value="diary">日記</button></dd>
+            <dd><button type="button" value="other">その他</button></dd>
+        </dl>
       </section>
       <section id="new">
         <h1>見たい新着動画リストの選択</h1>

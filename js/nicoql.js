@@ -35,12 +35,12 @@ jQuery(function($) {
         if (e.keyCode == 13) { $("#filter_ret").focus(); } });
     $("#range").change(function() {
         if ($(this).val() == "hourly") {
-            $("#genre").children("button").not("#g_all").hide();
+            $(".ranking_genre button").not("#g_all").hide();
         } else {
-            $("#genre").children("button").show();
+            $(".ranking_genre button").show();
         } });
     // Request RSS files based on values in remocon function from NicoNico Douga.
-    $("#genre").children("button").click(function() {
+    $(".ranking_genre button").click(function() {
         requestRSS({'key': 'ranking',
 		    'type': $("#type").val(),
 		    'range': $("#range").val(),
@@ -193,15 +193,18 @@ function makeRankingTitle(attr) {
                 {"hourly": "毎時", "daily": "デイリー", "weekly": "週間",
                  "monthly": "月間", "total": "合計"}[attr['range']],
                 {"all": "総合", 
-                 "ent": "エンタメ", "music": "音楽", "sing": "歌ってみた", "play": "演奏してみた",
+                 "g_ent2": "エンタメ・音楽", "ent": "エンタメ", "music": "音楽", 
+                 "sing": "歌ってみた", "play": "演奏してみた",
                  "dance": "踊ってみた", "vocaloid": "VOCALOID", "nicoindies": "インディーズ",
-                 "animal": "動物", "cooking": "料理", "nature": "自然", "travel": "旅行",  
-                 "sport": "スポーツ", "lecture": "ニコ動講座", "drive": "車載動画", "history": "歴史",
+                 "g_life2": "生活・一般・スポ", "animal": "動物", "cooking": "料理", "nature": "自然", 
+                 "travel": "旅行", "sport": "スポーツ", "lecture": "ニコ動講座", 
+                 "drive": "車載動画", "history": "歴史",
                  "politics": "政治",
-                 "science": "科学", "tech": "技術部", "handcraft": "手芸部", "make": "作ってみた",
-                 "anime": "アニメ", "game": "ゲーム", "toho": "東方", "imas": "IM@S", 
-                 "radio": "ラジオ", "draw": "描いてみた",
-                 "are": "例のアレ", "diary": "日記", "other": "その他"}[attr['genre']]].join('-');
+                 "g_tech": "科学・技術", "science": "科学", "tech": "技術部",
+                 "handcraft": "手芸部", "make": "作ってみた",
+                 "g_culture2": "アニメ・ゲーム・絵", "anime": "アニメ", "game": "ゲーム",
+                 "toho": "東方", "imas": "IM@S", "radio": "ラジオ", "draw": "描いてみた",
+                 "g_other": "その他", "are": "例のアレ", "diary": "日記", "other": "その他"}[attr['genre']]].join('-');
     } else if (key == 'new') {
         return {"newarrival": "新着投稿動画", "recent": "新着コメント動画"}[attr['genre']];
     } else if (key == 'tag') {

@@ -134,7 +134,7 @@ aside.menu h1 {
 aside.menu select { margin-right: 5px;}
 
 aside.menu button {
-    width: 7em;
+    width: 10em;
     margin: 2px 0;
     padding: 0;
     line-height: 2em;
@@ -143,19 +143,36 @@ aside.menu button {
     color: #000;
     background-color: #fff;
 }
-#remocon button:hover, #remocon button:focus { background-color: #fdf6e7; }
-#remocon button:active { 
+
+/**
+ * #remocon
+ */
+#remocon .ranking_genre  {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#remocon .ranking_genre dt button {
+    background-color: #fdc;
+}
+
+#remocon .ranking_genre button:hover, #remocon .ranking_genre button:focus { 
+    background-color: #fdf6e7;
+}
+
+#remocon .ranking_genre button:active { 
     border: 1px inset #ccc; 
     background-color: #febe0e; 
     color: #fff;
 }
-#new button { width: 10em; }
+
 #filter button:hover, #filter button:focus { background-color: #c6f5ff; }
 #filter button:active { 
     border: 1px inset #ccc; 
     background-color: #307bcd; 
     color: #fff;
 }
+
 
 aside.menu .inputted_items {
   min-height: 24px;
