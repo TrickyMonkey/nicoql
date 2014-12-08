@@ -1,5 +1,9 @@
 @import url(base.css);
 
+body {
+  font-family: Verdana, "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
 /*
  * header
  */
