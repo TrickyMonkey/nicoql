@@ -51,7 +51,7 @@ nav a:hover, nav a:active { color: #fff; }
     margin-top: 2px;
 }
 
-.menu_toggle, #save_selector, #search {
+.menu_toggle, #save_selector, #search_box {
     display: inline-block;
 }
 

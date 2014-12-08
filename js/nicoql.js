@@ -17,9 +17,9 @@ jQuery(function($) {
     // Make Movie Detail function off.
     $('#movie_detail').click(function() { $('#movie_detail').hide(300); });
     // Search movies related with query by using NicoNico Douga.
-    $("#query").keydown(function(e) {
+    $("#search_box").keydown(function(e) {
         if (e.keyCode == 13) { // if user presses RETURN key
-            location.href = 'http://www.nicovideo.jp/search/' + $("#query").val();
+            location.href = 'http://www.nicovideo.jp/search/' + $("#search_box").val();
         } });
     // about remocon and filter
     // Make remocon and filter functions on/off.
