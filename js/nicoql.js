@@ -375,7 +375,7 @@ function load() {
      */
     var groupID = $("#save_selector .selected").attr("id");
     var s = localStorage.getItem(groupID);
-    return (s === null || s === "undefined") ? [] : s.split('+');
+    return (s == "" || s === null || s === "undefined") ? [] : s.split('+');
 }
 
 function save() {
