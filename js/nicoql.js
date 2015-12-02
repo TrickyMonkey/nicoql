@@ -104,22 +104,21 @@ function requestRSS(attr) {
     var rid = makeRID(attr); // Ranking ID
     // The movie list is already made.
     if (secs.is("." + rid)) {return false;} 
-    var url = makeRankingURL(attr);
+    var url = 'http://www.cafe-gentle.jp/cgi-bin/nico/rc.cgi?order=' + rid;
     var $frame = insertFrame(attr); // make frame of movie list
-    // Request RSS file with Google Feed API.
-    var feed;
-    if (attr["key"] == "tag") {
-        feed = new google.feeds.Feed(url + '&rss=2.0');
-    } else {
-        feed = new google.feeds.Feed(url + '?rss=2.0');
-    }
-    feed.setNumEntries(100);
-    feed.setResultFormat(google.feeds.Feed.XML_FORMAT);
-    feed.load(function(result) {
-        if (!result.error) {
+    $.ajax({
+        url: url,
+        async: true,
+        cache: false,
+        dataType: 'xml',
+        error: function(){
+            alert('データを取得できませんでした。');
+            $('.' + rid).remove(); // remove frame of movie list
+        },
+        success: function(xml){
             // Make movie list from RSS file.
             $frame.children(":last").remove(); // delete p.loading elem
-            var items = result.xmlDocument.getElementsByTagName("item");
+            var items = $(xml).find('item');
             if (items.length > 1) {
                 $frame.append(frameBody(items));
                 save();
@@ -134,9 +133,8 @@ function requestRSS(attr) {
                               v[4], v[5], v[6], v[7]);
                 } 
             });
-        } else {
-            $('.' + rid).remove(); // remove frame of movie list
-        } }); 
+        }
+    });
     return true;
 }
 
@@ -430,8 +428,6 @@ function displaySaveData() {
  */
 function previewMovieDetail(movieID) {
     /* displays movie detail by overlay
-     * NOTE: obtains movie detail file from not Google Feed API but my site CGI
-     * program
      *
      * @type movieID: str
      * @param movieID: movieID defined in NicoNico Douga
